@@ -1,5 +1,5 @@
-// Author:		Andrew Graham
-// Date:			11 August 2015
+// Author:	Andrew Graham
+// Date:		11 August 2015
 // Purpose:	Looking at the effects of Macros, Expansion, and Evaluation Order
 #include <stdio.h>
 #define MULTIPLY(a, b) a * b
