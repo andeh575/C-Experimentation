@@ -9,6 +9,10 @@ int fahr;
 
 int main(void) {
 	
+	// Print the table header
+	printf("%2c %5c %6c\n", 'F', 'C', 'K');
+	printf("-----------------\n");
+	
 	// Print temperatures in Fahrenheit, Celsius, and Kelvin
 	for(fahr = 0; fahr <= 300; fahr = fahr + 10) {
 		printf("%3d %6.1f %6.1f\n", fahr, ((fahr - 32) / 1.8), ((fahr - 32) / 1.8) + 273);

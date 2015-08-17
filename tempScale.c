@@ -11,6 +11,10 @@ int main (void) {
 	
 	fahr = 0;
 	
+	// Print the table header
+	printf("%2c %5c %6c\n", 'F', 'C', 'K');
+	printf("-----------------\n");
+	
 	for (i = 0; i <= maximum; i++)
 	{	
 		cels = (fahr - 32) / 1.8;
