@@ -5,7 +5,8 @@
 
 int main (void) {
 
-	int fahr, cels, kelv, i;
+	float fahr, cels, kelv;
+	int i;
 	int maximum = 30;
 	
 	fahr = 0;
@@ -16,7 +17,7 @@ int main (void) {
 		
 		kelv = cels + 273;
 		
-		printf("%3d %3d %3d\n", fahr, cels, kelv);
+		printf("%3.f %6.1f %6.1f\n", fahr, cels, kelv);
 		
 		fahr = fahr + 10;
 	}
