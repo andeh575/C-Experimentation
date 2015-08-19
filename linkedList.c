@@ -19,6 +19,7 @@ struct node {
 
 struct node* buildSample();
 int length(struct node* head);
+void push(struct node** headref, int val); 
 
 int main(void) {
 	
@@ -28,7 +29,13 @@ int main(void) {
 	struct node* myList = buildSample();
 	
 	int len = length(myList);
+	printf("The sample list has a length of: %d\n", len);
 	
+	printf("Adding two new nodes to the list...\n\n");
+	push(&myList, 5);
+	push(&myList, 7);
+	
+	len = length(myList);
 	printf("The sample list has a length of: %d\n", len);
 
 	return 0;
@@ -62,7 +69,7 @@ struct node* buildSample() {
 	return head;
 }
 
-/*	Given a linked list head pointer, computer and return number of nodes in list.
+/*	Given a list head pointer, computer and return number of nodes in list.
 /	
 /	Notes:
 /	- 	List is being passed by the head pointer. This copies the pointer into the local 'head' 
@@ -82,5 +89,23 @@ int length(struct node* head) {
 	}
 	
 	return count;
+}
+
+/* 	Given a list and a data value this function creates a new link with the given data and 
+/ 	pushes it onto the front of the list.
+/
+/	Notes:
+/	-	List not passed in by head pointer - list is passed in as a 'reference' pointer to the
+/		the head pointer. This allows the modification of the caller's memory. 
+/	-	"If you want to modify caller memory then you have to pass a pointer to the memory
+/		 not just a copy of the memory." 
+*/
+void push(struct node** headRef, int data) {
+	// Allocate memory and store data into the new node
+	struct node* newNode = malloc(sizeof(struct node));
+	
+	newNode->val = data;
+	newNode->next = *headRef; // '*' Dereferences headRef back to the real head pointer 
+	*headRef = newNode;			
 }
 
