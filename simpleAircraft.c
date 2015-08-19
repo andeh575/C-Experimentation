@@ -37,6 +37,9 @@ int main(void) {
 	addAircraft(fighters, airborneFighters);
 	displayAircraft(fighters, airborneFighters);
 	
+	// Free memory allocated by malloc()
+	free(fighters);
+	
 	return 0;
 }
 
