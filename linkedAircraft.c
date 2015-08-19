@@ -64,13 +64,14 @@ void scanList(Fighter *head, char val[]) {
 	
 	printf("Scanning list for: %s\n", val);
 	
-	while(current->next != NULL) {
+	while(current->flight[0] != '\0') {
 		if(strcmp(current->flight, val) == 0) {
 			displayAircraft(current);
 			return;
 		}
 		
-		current = current->next;
+		if(current->next != NULL)
+			current = current->next;
 	}
 	
 	printf("Entry does not exist in list.\n\n");
@@ -92,9 +93,7 @@ void addElement(Fighter *head, Fighter *fighter) {
 	current->longitude = fighter->longitude;
 	current->heading = fighter->heading;
 	current->airSpeed = fighter->airSpeed;
-	
-	// Ensure the next node is prepared for an entry
-	current->next = malloc(sizeof(Fighter));
+	current->next = NULL;
 	
 }
 
@@ -105,7 +104,9 @@ void removeElement(Fighter *head, char val[]) {
 	
 	printf("Removing entry: %s\n", val);
 	
-	while(current->next != NULL) {
+	// Check to see if the head is the one to remove
+	
+	while(current->flight[0] != '\0') {
 		if(strcmp(current->flight, val) == 0) {
 			//delete that entry and reconnect the list 
 			temp = current->next;
@@ -178,7 +179,10 @@ void displayList(Fighter *head) {
 	// Make sure we don't print the last, empty but allocated entry
 	while (current->flight[0] != '\0') {
 		displayAircraft(current);
-		current = current->next;
+		if(current->next != NULL)
+			current = current->next;
+		else
+			return;
 	}
 }
 
